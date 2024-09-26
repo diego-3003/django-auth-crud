@@ -60,7 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.whiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'djangocrud.urls'
@@ -130,11 +130,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 if not DEBUG:  # Tell Django to copy statics to the `staticfiles` directory
     # in your application directory on Render. 
-    STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
     # Turn on whiteNotise storage backend that takes core of coompressing statics files
     # and creating unique names for each version so they con safely be coached forever. 
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
